@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content')
 
@@ -20,17 +20,17 @@
 	            </div>
 
 	            <div class="form-group">
-	            	<label for="title">A&ntilde;o</label>
+	            	<label for="year">A&ntilde;o</label>
 	               <input type="number" name="year" id="year">
 	            </div>
 
 	            <div class="form-group">
-	            	<label for="title">Director</label>
+	            	<label for="director">Director</label>
 	               <input type="text" name="director" id="director" class="form-control">
 	            </div>
 
 	            <div class="form-group">
-	            	<label for="title">P&oacute;ster</label>
+	            	<label for="poster">P&oacute;ster</label>
 	               <input type="text" name="poster" id="poster" class="form-control">
 	            </div>
 
