@@ -26,7 +26,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResource('peliculas', PeliculaController::class);
 
-Route::get('/api/peliculas/search/{search}', [PeliculaController::class, 'showAPI']);
+Route::get('/peliculas/search/{search}', [PeliculaController::class, 'showAPI']);
 
 Route::any('/{any}', function (ServerRequestInterface $request) {
     $config = new Config([
