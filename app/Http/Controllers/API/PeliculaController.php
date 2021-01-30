@@ -56,6 +56,38 @@ class PeliculaController extends Controller
     }
 
     /**
+     * Guarda una película solicitada por ID a OMBD en la base de datos.
+     *
+     * @param  String  $idFilm
+     * @return \Illuminate\Http\Response
+     */
+    public function storeFromOMBD($idFilm)
+    {
+
+        $host = 'www.omdbapi.com';
+        $response = Http::get('http://' . $host . '/', [
+            'apikey' => env('OMDBAPI_KEY'),
+            'i' => $idFilm,
+            'page' => 1,
+            'r' => 'json'
+        ]);
+
+        $pelicula= new Pelicula;
+
+        $pelicula->title = $response['Title'];
+        $pelicula->year = $response['Year'];
+        $pelicula->director = $response['Director'];
+        $pelicula->poster = $response['Poster'];
+        //$pelicula->rented = false;  valor por defecto
+        $pelicula->synopsis = $response['Plot'];
+        $pelicula->save();
+
+        return new PeliculaResource($pelicula);
+    }
+
+
+
+    /**
      * Display the specified resource.
      *
      * @param  \App\Models\Pelicula  $pelicula

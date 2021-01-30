@@ -27,3 +27,5 @@ Route::middleware('auth:sanctum')->apiResource('peliculas', PeliculaController::
 Route::get('peliculas/search/{search}', [PeliculaController::class, 'search'])->name('peliculas.search');
 
 Route::post('tokens/create',[LoginController::class,'createToken']);
+
+Route::post('peliculas/newOMDB/{idFilm}',[PeliculaController::class,'storeFromOMBD']);
